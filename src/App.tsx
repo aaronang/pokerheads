@@ -1,3 +1,4 @@
+import { Moon, Sun } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -13,6 +14,7 @@ import { PlayerList } from '@/components/PlayerList'
 import { RoundCard } from '@/components/RoundCard'
 import { Settlement } from '@/components/Settlement'
 import { useSession } from '@/hooks/useSession'
+import { useTheme } from '@/hooks/useTheme'
 
 export default function App() {
   const {
@@ -27,30 +29,36 @@ export default function App() {
     deleteRound,
     newSession,
   } = useSession()
+  const { isDark, toggle: toggleTheme } = useTheme()
 
   return (
     <div className="mx-auto max-w-md space-y-4 p-4 pb-16">
       <header className="flex items-center justify-between">
         <h1 className="text-2xl font-medium tracking-tight">Pokerheads</h1>
-        <Dialog>
-          <DialogTrigger render={<Button variant="secondary" />}>
-            New session
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Start a new session?</DialogTitle>
-              <DialogDescription>
-                This deletes all players, games and results. There is no undo.
-              </DialogDescription>
-            </DialogHeader>
-            <DialogFooter>
-              <DialogClose render={<Button variant="outline" />}>Cancel</DialogClose>
-              <DialogClose render={<Button variant="destructive" onClick={newSession} />}>
-                Delete everything
-              </DialogClose>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
+        <div className="flex items-center gap-2">
+          <Button variant="secondary" size="icon" onClick={toggleTheme} title="Toggle theme">
+            {isDark ? <Sun /> : <Moon />}
+          </Button>
+          <Dialog>
+            <DialogTrigger render={<Button variant="secondary" />}>
+              New session
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Start a new session?</DialogTitle>
+                <DialogDescription>
+                  This deletes all players, games and results. There is no undo.
+                </DialogDescription>
+              </DialogHeader>
+              <DialogFooter>
+                <DialogClose render={<Button variant="outline" />}>Cancel</DialogClose>
+                <DialogClose render={<Button variant="destructive" onClick={newSession} />}>
+                  Delete everything
+                </DialogClose>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+        </div>
       </header>
 
       <PlayerList
