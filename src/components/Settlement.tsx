@@ -47,7 +47,7 @@ export function Settlement({ session }: { session: Session }) {
                 <span className="font-medium">{p.name}</span>
                 <span
                   className={
-                    'font-mono tabular-nums ' +
+                    'font-mono text-sm tabular-nums ' +
                     (net === 0 ? 'text-muted-foreground' : net > 0 ? 'text-positive' : 'text-destructive')
                   }
                 >
@@ -70,7 +70,7 @@ export function Settlement({ session }: { session: Session }) {
                   <span className="text-muted-foreground"> pays </span>
                   <span className="font-medium">{playerName.get(t.toId) ?? '?'}</span>
                 </span>
-                <span className="font-mono tabular-nums font-semibold">{formatMoney(t.milli)}</span>
+                <span className="font-mono text-sm font-semibold tabular-nums">{formatMoney(t.milli)}</span>
               </div>
             ))}
           </div>

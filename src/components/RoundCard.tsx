@@ -65,7 +65,7 @@ export function RoundCard({ round, index, players, onUpdateUnitValue, onUpdateEn
             inputMode="decimal"
             min={0}
             step={0.001}
-            className="w-24 font-mono text-sm"
+            className="w-24 font-mono text-sm md:text-sm"
             value={milliToDollars(round.unitValueMilli)}
             onChange={(e) => {
               const dollars = Number(e.target.value)
@@ -97,7 +97,7 @@ export function RoundCard({ round, index, players, onUpdateUnitValue, onUpdateEn
                       type="number"
                       inputMode="numeric"
                       min={0}
-                      className="mx-auto w-16 text-right font-mono text-sm"
+                      className="mx-auto w-16 text-right font-mono text-sm md:text-sm"
                       value={entry.buyIn ?? ''}
                       onChange={(e) => onUpdateEntry(entry.playerId, { buyIn: parseUnits(e.target.value) })}
                     />
@@ -107,7 +107,7 @@ export function RoundCard({ round, index, players, onUpdateUnitValue, onUpdateEn
                       type="number"
                       inputMode="numeric"
                       min={0}
-                      className="mx-auto w-16 text-right font-mono text-sm"
+                      className="mx-auto w-16 text-right font-mono text-sm md:text-sm"
                       value={entry.finalStack ?? ''}
                       onChange={(e) =>
                         onUpdateEntry(entry.playerId, { finalStack: parseUnits(e.target.value) })
@@ -116,7 +116,7 @@ export function RoundCard({ round, index, players, onUpdateUnitValue, onUpdateEn
                   </TableCell>
                   <TableCell
                     className={
-                      'text-right font-mono tabular-nums ' +
+                      'text-right font-mono text-sm tabular-nums ' +
                       (net === null || net === 0
                         ? 'text-muted-foreground'
                         : net > 0

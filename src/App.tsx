@@ -36,11 +36,11 @@ export default function App() {
       <header className="flex items-center justify-between">
         <h1 className="text-2xl font-medium tracking-tight">Pokerheads</h1>
         <div className="flex items-center gap-2">
-          <Button variant="secondary" size="icon" onClick={toggleTheme} title="Toggle theme">
+          <Button variant="ghost" size="icon" onClick={toggleTheme} title="Toggle theme">
             {isDark ? <Sun /> : <Moon />}
           </Button>
           <Dialog>
-            <DialogTrigger render={<Button variant="secondary" />}>
+            <DialogTrigger render={<Button variant="outline" />}>
               New session
             </DialogTrigger>
             <DialogContent>
@@ -82,7 +82,7 @@ export default function App() {
       ))}
 
       {session.players.length >= 2 ? (
-        <Button className="w-full" variant="secondary" onClick={addRound}>
+        <Button className="w-full" variant="outline" onClick={addRound}>
           + Add game
         </Button>
       ) : (
